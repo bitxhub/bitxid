@@ -86,7 +86,7 @@ func getAdminDoc() *DIDDoc {
 func genesisDIDDoc() *DIDDoc {
 	return &DIDDoc{
 		BasicDoc: BasicDoc{
-			ID:   "did:bitxhub:appchain001:0x00000001",
+			ID:   "did:bitxhub:relayroot:0x00000001",
 			Type: "user",
 			PublicKey: []PubKey{
 				{

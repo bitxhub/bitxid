@@ -285,7 +285,7 @@ func (r *DIDRegistry) updateDocdbOrNot(docOption DocOption, expectedStatus Statu
 		docHash = docOption.Hash
 		status := r.getDIDStatus(did)
 		if status != expectedStatus {
-			return "", nil, "", fmt.Errorf("Method %s is under status: %s, expectd status: %s", did, status, expectedStatus)
+			// return "", nil, "", fmt.Errorf("DID %s is under status: %s, expectd status: %s", did, status, expectedStatus)
 		}
 	}
 	return docAddr, docHash, did, nil
@@ -339,10 +339,10 @@ func (r *DIDRegistry) UnFreeze(did DID) error {
 
 // Delete .
 func (r *DIDRegistry) Delete(did DID) error {
-	err := r.auditStatus(did, Initial)
-	if err != nil {
-		return fmt.Errorf("delete DID aduit status: %w", err)
-	}
+	// err := r.auditStatus(did, Initial)
+	// if err != nil {
+	// 	return fmt.Errorf("delete DID aduit status: %w", err)
+	// }
 	r.Table.DeleteItem(did)
 	if r.Mode == InternalDocDB {
 		r.Docdb.Delete(did)

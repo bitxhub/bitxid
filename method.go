@@ -206,7 +206,7 @@ func (r *MethodRegistry) Apply(caller DID, method DID) error {
 
 	status := r.getMethodStatus(method)
 	if status != Initial {
-		return fmt.Errorf("can not apply %s under status: %s", method, status)
+		// return fmt.Errorf("can not apply %s under status: %s", method, status)
 	}
 	// creates item in table
 	err := r.Table.CreateItem(
@@ -230,7 +230,7 @@ func (r *MethodRegistry) AuditApply(method DID, result bool) error {
 	}
 	status := r.getMethodStatus(method)
 	if !(status == ApplyAudit || status == ApplyFailed) {
-		return fmt.Errorf("can not auditapply %s under status: %s", method, status)
+		// return fmt.Errorf("can not auditapply %s under status: %s", method, status)
 	}
 	var err error = nil
 	if result {
@@ -318,7 +318,7 @@ func (r *MethodRegistry) updateDocdbOrNot(docOption DocOption, expectedStatus St
 		docHash = docOption.Hash
 		status := r.getMethodStatus(method)
 		if status != expectedStatus {
-			return "", nil, "", fmt.Errorf("Method %s is under status: %s, expected status: %s", method, status, expectedStatus)
+			// return "", nil, "", fmt.Errorf("Method %s is under status: %s, expected status: %s", method, status, expectedStatus)
 		}
 	}
 	return docAddr, docHash, method, nil
@@ -357,10 +357,10 @@ func (r *MethodRegistry) UnFreeze(method DID) error {
 
 // Delete .
 func (r *MethodRegistry) Delete(method DID) error {
-	err := r.auditStatus(method, Initial)
-	if err != nil {
-		return fmt.Errorf("Method delete: %w", err)
-	}
+	// err := r.auditStatus(method, Initial)
+	// if err != nil {
+	// 	return fmt.Errorf("Method delete: %w", err)
+	// }
 
 	r.Table.DeleteItem(method)
 

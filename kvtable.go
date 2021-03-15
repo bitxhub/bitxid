@@ -48,7 +48,7 @@ func (r *KVTable) CreateItem(item TableItem) error {
 	}
 	exist := r.HasItem(did)
 	if exist == true {
-		return fmt.Errorf("Key %s already existed in kvtable", did)
+		// return fmt.Errorf("Key %s already existed in kvtable", did)
 	}
 	return r.setItem(did, item)
 }
